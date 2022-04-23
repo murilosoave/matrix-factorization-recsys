@@ -7,21 +7,41 @@ class MatrixFactorization:
                  n_iterations=5000,
                  learning_rate=0.001,
                  l2=0.01):
-        """Initialize MatrixFactorization parameters."""
+        """
+        Initialize MatrixFactorization parameters.
+        
+        Parameters
+        ----------
+        n_latent_features : int, optional (default=5)
+            Number of latent features that will be learned to represent user-items matrices.
+        n_iterations : int, optional (default=5000)
+            Number of steps to use during algorithm training.
+        learning_rate : float, optional (default=0.001)
+            Step size on descent gradient.
+        l2 : float, optional (default=0.01)
+            Regularization weight.
+        """
         self.n_latent_features = n_latent_features
         self.n_iterations = n_iterations
         self.learning_rate = learning_rate
         self.l2 = l2
     
     def fit(self, data):
-        "Fit a representation of users and items."
+        """
+        Fit a representation of users and items.
+        
+        Parameters
+        ----------
+        data : np.narray
+            Rating array, values to be predicted should be filled with 0.
+        """
         users_count = data.shape[0]
         items_count = data.shape[1]
         
         users_latent_features = np.random.rand(users_count,
                                                self.n_latent_features)
         items_latent_features = np.random.rand(items_count,
-                                               self.n_latent_features)
+                                               self.n_latent_feature.s)
         
         for epoch in range(self.n_iterations):
             users_latent_features, items_latent_features = (
