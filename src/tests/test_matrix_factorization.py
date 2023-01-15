@@ -23,6 +23,7 @@ class TestMatrixFactorization:
 
         assert users_latent_features.shape == (5, 5)
         assert items_latent_features.shape == (5, 5)
+
         assert isinstance(users_latent_features, np.ndarray)
         assert isinstance(items_latent_features, np.ndarray)
 
@@ -33,13 +34,19 @@ class TestMatrixFactorization:
                         [0, 0, 3, 0, 0],
                         [0, 0, 0, 2, 0],
                         [0, 0, 0, 0, 5]])
+
         users_latent_features = np.random.rand(5, 5)
         items_latent_features = np.random.rand(5, 5)
 
-        updated_users_latent_features, updated_items_latent_features = matrix_factorization._update_weights(data, users_latent_features, items_latent_features)
+        updated_users_latent_features, updated_items_latent_features = matrix_factorization._update_weights(
+            data,
+            users_latent_features,
+            items_latent_features
+        )
 
         assert updated_users_latent_features.shape == (5, 5)
         assert updated_items_latent_features.shape == (5, 5)
+
         assert isinstance(updated_users_latent_features, np.ndarray)
         assert isinstance(updated_items_latent_features, np.ndarray)
 
@@ -52,9 +59,17 @@ class TestMatrixFactorization:
         item_idx = 3
         latent_idx = 4
 
-        updated_users_latent_features, updated_items_latent_features = matrix_factorization._compute_gradient(error, users_latent_features, items_latent_features, user_idx, item_idx, latent_idx)
+        updated_users_latent_features, updated_items_latent_features = matrix_factorization._compute_gradient(
+            error,
+            users_latent_features,
+            items_latent_features,
+            user_idx,
+            item_idx,
+            latent_idx
+        )
 
         assert updated_users_latent_features.shape == (5, 5)
         assert updated_items_latent_features.shape == (5, 5)
+
         assert isinstance(updated_users_latent_features, np.ndarray)
         assert isinstance(updated_items_latent_features, np.ndarray)
